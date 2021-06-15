@@ -17,7 +17,17 @@ async def on_message(message):
         print('Sending join message')
         await message.channel.send('**To join the server, type r!whitelist**')
     await client.process_commands(message)
-
+@client.event
+async def on_message(message):
+    if 'bad bot' in message.content:
+        if message.author == client.user:
+            return
+    await client.process_commands(message)
+async def on_message(message):
+    if 'Bad bot' in message.content:
+        if message.author == client.user:
+            return
+    await client.process_commands(message)
 @client.event
 async def on_ready():
     await client.change_presence(status=discord.Status.dnd, activity=discord.Activity(type=discord.ActivityType.watching, name="r!helpme for more info!"))

@@ -41,6 +41,12 @@ async def infoembed(ctx):
     embed=discord.Embed(title="**How to join the server!**", description="This is a Nation's SMP where you and your friends can gather resources, start wars and become the most powerful nation Minecraft has seen.  \n \nTo apply for the server, go to <#842013896519843841>. Once you have, ping a Server Owner is be whitelisted!   \n \nThe server IP is: **51.81.48.184:25585**  \n \nIf you have any questions, DM one of the staff!   Yours sincerely, The Ramen SMP Staff Team.", color=0xe60d43)
     await ctx.send(embed=embed)
 
+@client.command()
+async def kick(ctx):
+    if ctx.message.author.guild_permissions.manage_messages:
+        await ctx.send("Test")
+    else:
+        await ctx.send('You dont have permission to do this, if you think this is a mistake, contact Loudbook!')
 
 load_dotenv()
 TOKEN = os.getenv('TOKEN')

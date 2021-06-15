@@ -1,33 +1,39 @@
-"""
 import discord
-TOKEN = 'ODU0MTU2ODAyMzI1NDc5NDM0.YMf1gw._zr4rp7szfX_dWZuFZkfQODIxUw'
-PREFIX = '!'
-INTENTS = discord.Intents.default()
-client = discord.Client(commands_prefix=PREFIX, intents=INTENTS)
+import os
+from discord.ext import commands
+from dotenv import load_dotenv
+client = commands.Bot(command_prefix = 'r!')
 
 
-@client.event
-async def on_ready():
-    print(f'Logged in as: {client.user.name}')
-    print(f'With ID: {client.user.id}')
+
 
 @client.event
 async def on_message(message):
-  if message.author == client.user:
-    return
+    if 'join' in message.content:
+        if message.author == client.user:
+            return
+        print('Sending join message')
+        await message.channel.send('**To join the server, type r!whitelist**')
+    await client.process_commands(message)
 
-  if message.content.startswith('$hello'):
-    await message.channel.send('Hello!')
+@client.event
+async def on_ready():
+    print ('Bot is ready!')
+
+@client.command()
+async def ping(ctx):
+    await ctx.send(f'Pong! {round(client.latency * 1000)}ms')
+
+@client.command()
+async def hello(ctx):
+    await ctx.send('Why hello there good human!')
 
 
-  if message.content.startswith('Bad bot'):
-    await message.channel.send('Bad human')
 
+@client.command()
+async def whitelist(ctx):
+    await ctx.send("**First, to join the server, you must apply. Here is the link! https://forms.gle/3BES6WgUQmkM37do7** \nOnce you are done, ping a Server Owner to get access to the server.")
 
-@client.event()
-async def ping(message):
-    await message.channel.send(f'Pong! {round(client.latency * 1000)}ms')
-
-
+load_dotenv()
+TOKEN = os.getenv('TOKEN')
 client.run(TOKEN)
-"""

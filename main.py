@@ -12,6 +12,8 @@ async def on_message(message):
     if 'join' in message.content:
         if message.author == client.user:
             return
+        if message.author.id == 845383239043514388:
+            return
         print('Sending join message')
         await message.channel.send('**To join the server, type r!whitelist**')
     await client.process_commands(message)

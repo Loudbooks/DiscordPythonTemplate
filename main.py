@@ -48,6 +48,11 @@ async def kick(ctx):
     else:
         await ctx.send('You dont have permission to do this, if you think this is a mistake, contact Loudbook!')
 
+@client.command()
+async def helpme(ctx):
+    await ctx.send('**Current Command List:** \n`r!helpme` - Shows this menu. \n`r!infoembed` - Gives info on how to join the smp. \n`r!ping` - Shows the ping in ms to the server.')
+
+
 load_dotenv()
 TOKEN = os.getenv('TOKEN')
 client.run(TOKEN)

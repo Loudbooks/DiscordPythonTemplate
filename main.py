@@ -67,6 +67,25 @@ async def kick(ctx):
 async def helpme(ctx):
     await ctx.send('**Current Command List:** \n`r!helpme` - Shows this menu. \n`r!infoembed` - Gives info on how to join the smp. \n`r!ping` - Shows the ping in ms to the server. \n`r!hello` - Replies with a warm hello!')
 
+@client.command()
+async def load(ctx, extention):
+    client.load_extension(f'cogs.{extention}')
+"""
+@client.command()
+async def unload(ctx, extention):
+    client.unload_extension(f'cogs.{extention}')
+
+for filename in os.listdir('.cogs'):
+    if filename.endswith('.py'):
+        client.load_extension(f'cogs.{filename[:-3]}')
+"""
+@client.command()
+async def purge(ctx, amount=100):
+    if ctx.message.author.guild_permissions.manage_messages:
+        await ctx.channel.purge(limit=amount+1)
+
+    else:
+        await ctx.send('You dont have permission to do this, if you think this is a mistake, contact Loudbook!')
 
 load_dotenv()
 TOKEN = os.getenv('TOKEN')

@@ -5,8 +5,6 @@ from dotenv import load_dotenv
 client = commands.Bot(command_prefix = 'r!')
 
 
-
-
 @client.event
 async def on_message(message):
     if 'join' in message.content:
@@ -22,12 +20,18 @@ async def on_message(message):
     if 'bad bot' in message.content:
         if message.author == client.user:
             return
+        await message.channel.send('bad human.')
     await client.process_commands(message)
+
+
 async def on_message(message):
     if 'Bad bot' in message.content:
         if message.author == client.user:
             return
+        await message.channel.send('Bad human.')
     await client.process_commands(message)
+
+
 @client.event
 async def on_ready():
     await client.change_presence(status=discord.Status.dnd, activity=discord.Activity(type=discord.ActivityType.watching, name="r!helpme for more info!"))

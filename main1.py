@@ -34,6 +34,6 @@ async def hello(ctx):
 async def whitelist(ctx):
     await ctx.send("**First, to join the server, you must apply. Here is the link! https://forms.gle/3BES6WgUQmkM37do7** \nOnce you are done, ping a Server Owner to get access to the server.")
 
-TOKEN = os.environ.get('TOKEN')
-
-client.run('ODU0MTU2ODAyMzI1NDc5NDM0.YMf1gw._zr4rp7szfX_dWZuFZkfQODIxUw')
+load_dotenv()
+TOKEN = os.getenv('TOKEN')
+client.run(TOKEN)

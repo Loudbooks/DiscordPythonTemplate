@@ -52,7 +52,7 @@ async def kick(ctx):
 
 @client.command()
 async def helpme(ctx):
-    await ctx.send('**Current Command List:** \n`r!helpme` - Shows this menu. \n`r!infoembed` - Gives info on how to join the smp. \n`r!ping` - Shows the ping in ms to the server.')
+    await ctx.send('**Current Command List:** \n`r!helpme` - Shows this menu. \n`r!infoembed` - Gives info on how to join the smp. \n`r!ping` - Shows the ping in ms to the server. \n`r!hello` - Replies with a warm hello!')
 
 
 load_dotenv()

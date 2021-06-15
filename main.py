@@ -65,7 +65,7 @@ async def kick(ctx):
 
 @client.command()
 async def helpme(ctx):
-    await ctx.send('**Current Command List:** \n`r!helpme` - Shows this menu. \n`r!infoembed` - Gives info on how to join the smp. \n`r!ping` - Shows the ping in ms to the server. \n`r!hello` - Replies with a warm hello!')
+    await ctx.send('**Current Command List:** \n`r!helpme` - Shows this menu. \n`r!infoembed` - Gives info on how to join the smp. \n`r!ping` - Shows the ping in ms to the server. \nr!purge <amount> - Deleted the specified number of messages. **Default is 50**. \n`r!hello` - Replies with a warm hello!')
 
 @client.command()
 async def load(ctx, extention):
@@ -80,9 +80,11 @@ for filename in os.listdir('.cogs'):
         client.load_extension(f'cogs.{filename[:-3]}')
 """
 @client.command()
-async def purge(ctx, amount=100):
+async def purge(ctx, amount=50):
     if ctx.message.author.guild_permissions.manage_messages:
         await ctx.channel.purge(limit=amount+1)
+
+        
 
     else:
         await ctx.send('You dont have permission to do this, if you think this is a mistake, contact Loudbook!')

@@ -12,28 +12,28 @@ async def on_message(message):
     if 'join' in message.content:
         if message.author == client.user:
             return
-        if message.author.id == 845383239043514388:
+        elif message.author.id == 845383239043514388:
             return
         else:
             print('Sending join message')
             await message.channel.send('**To join the server, type r!whitelist**')
-    await client.process_commands(message)
-
-@client.event
+            await client.process_commands(message)
+@client.listen()
 async def on_message(message):
+    await client.process_commands(message)
     if 'bad bot' in message.content:
         if message.author == client.user:
             return
         await message.channel.send('bad human.')
-    await client.process_commands(message)
 
 
+
+@client.listen()
 async def on_message(message):
-    if 'Bad bot' in message.content:
-        if message.author == client.user:
-            return
-        await message.channel.send('Bad human.')
-    await client.process_commands(message)
+    if 'join1' in message.content:
+        print("in on_message #2")
+
+
 
 
 @client.event
@@ -62,7 +62,7 @@ async def info(ctx):
 
 @client.command()
 async def kick(ctx):
-    if ctx.message.author.guild_permissions.manage_messages:
+    if ctx.message.author.guild_permissions.administrator:
         await ctx.send("Test")
     else:
         await ctx.send(noperms)
@@ -73,12 +73,15 @@ async def help(ctx):
 
 @client.command()
 async def load(ctx, extention):
-    client.load_extension(f'cogs.{extention}')
+    if ctx.message.author.guild_permissions.manage_messages:
+        client.load_extension(f'cogs.{extention}')
+        await ctx.send('Loaded Jayden module')
 
 @client.command()
 async def unload(ctx, extention):
-    client.unload_extension(f'cogs.{extention}')
-    await ctx.send('Unloaded Jayden module.')
+    if ctx.message.author.guild_permissions.manage_messages:
+        client.unload_extension(f'cogs.{extention}')
+        await ctx.send('Unloaded Jayden module.')
 
 for filename in os.listdir('./cogs'):
     if filename.endswith('.py'):

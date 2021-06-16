@@ -65,7 +65,7 @@ async def kick(ctx):
 
 @client.command()
 async def helpme(ctx):
-    await ctx.send('**Current Command List:** \n`r!helpme` - Shows this menu. \n`r!infoembed` - Gives info on how to join the smp. \n`r!ping` - Shows the ping in ms to the server. \nr!purge <amount> - Deleted the specified number of messages. **Default is 50**. \n`r!hello` - Replies with a warm hello!')
+    await ctx.send('**Current Command List:** \n`r!helpme` - Shows this menu. \n`r!infoembed` - Gives info on how to join the smp. \n`r!ping` - Shows the ping in ms to the server. \n`r!purge <amount>` - Deleted the specified number of messages. **Default is 50**. \n`r!hello` - Replies with a warm hello!')
 
 @client.command()
 async def load(ctx, extention):

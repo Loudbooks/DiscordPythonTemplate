@@ -10,8 +10,8 @@ class Bot(commands.Cog):
 
     #Commands go below
     @commands.command()
-    async def ping1(self, ctx):
-        await ctx.send('Pong!')
+    async def jayden(self, ctx):
+        await ctx.send('Jayden is currently active!')
 
 def setup(client):
     client.add_cog(Bot(client))

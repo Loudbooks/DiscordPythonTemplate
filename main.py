@@ -69,7 +69,7 @@ async def kick(ctx):
 
 @client.command()
 async def help(ctx):
-    await ctx.send('**Current Command List:** \n`r!helpme` - Shows this menu. \n`r!infoembed` - Gives info on how to join the smp. \n`r!ping` - Shows the ping in ms to the server. \n`r!purge <amount>` - Deleted the specified number of messages. **Default is 50**. \n`r!hello` - Replies with a warm hello!')
+    await ctx.send('**Current Command List:** \n`r!helpme` - Shows this menu. \n`r!infoembed` - Gives info on how to join the smp. \n`r!ping` - Shows the ping in ms to the server. \n`r!purge <amount>` - Deleted the specified number of messages. **Default is 50**. \n`r!hello` - Replies with a warm hello! \n`r!load <cog>` - Loads a COG module.')
 
 @client.command()
 async def load(ctx, extention):
@@ -78,6 +78,7 @@ async def load(ctx, extention):
 @client.command()
 async def unload(ctx, extention):
     client.unload_extension(f'cogs.{extention}')
+    await ctx.send('Unloaded Jayden module.')
 
 for filename in os.listdir('./cogs'):
     if filename.endswith('.py'):

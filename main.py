@@ -14,9 +14,11 @@ async def on_message(message):
             return
         if message.author.id == 845383239043514388:
             return
-        print('Sending join message')
-        await message.channel.send('**To join the server, type r!whitelist**')
+        else:
+            print('Sending join message')
+            await message.channel.send('**To join the server, type r!whitelist**')
     await client.process_commands(message)
+
 @client.event
 async def on_message(message):
     if 'bad bot' in message.content:
@@ -72,15 +74,15 @@ async def help(ctx):
 @client.command()
 async def load(ctx, extention):
     client.load_extension(f'cogs.{extention}')
-"""
+
 @client.command()
 async def unload(ctx, extention):
     client.unload_extension(f'cogs.{extention}')
 
-for filename in os.listdir('.cogs'):
+for filename in os.listdir('./cogs'):
     if filename.endswith('.py'):
         client.load_extension(f'cogs.{filename[:-3]}')
-"""
+
 @client.command()
 async def purge(ctx, amount=50):
     if ctx.message.author.guild_permissions.manage_messages:

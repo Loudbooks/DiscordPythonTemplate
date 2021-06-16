@@ -1,17 +1,17 @@
 import discord
+import os
 from discord.ext import commands
+from dotenv import load_dotenv
 
-class Bot(commands.Cog):
+class Jayden(commands.Cog):
     def __init__(self, client):
         self.client = client
     @commands.Cog.listener()
     async def on_ready(self):
-        print('COG is loaded.')
+        print('Jayden machine is loaded.')
 
     #Commands go below
-    @commands.command()
-    async def ping1(self, ctx):
-        await ctx.send('Pong!')
+
 
 def setup(client):
-    client.add_cog(Bot(client))
+    client.add_cog(Jayden(client))

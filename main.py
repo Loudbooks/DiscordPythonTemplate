@@ -69,7 +69,7 @@ async def kick(ctx):
 
 @client.command()
 async def help(ctx):
-    await ctx.send('**Current Command List:** \n`r!help` - Shows this menu. \n`r!info` - Gives info on how to join the smp. \n`r!whitelist` - Shows how to apply for the server. \n`r!ping` - Shows the ping in ms to the server. \n`r!purge <amount>` - Deleted the specified number of messages. **Default is 50**. \n`r!hello` - Replies with a warm hello! \n`r!load <cog>` - Loads a COG module.')
+    await ctx.send('**Current Command List:** \n`r!help` - Shows this menu. \n`r!info` - Gives info on how to join the smp. \n`r!whitelist` - Shows how to apply for the server. \n`r!ping` - Shows the ping in ms to the server. \n`r!purge <amount>` - Deleted the specified number of messages. **Default is 50**. \n`r!hello` - Replies with a warm hello! \n`r!bubblewrap` - Pop some bubbles! \n`r!load <cog>` - Loads a COG module.')
 
 @client.command()
 async def load(ctx, extention):
@@ -91,11 +91,15 @@ for filename in os.listdir('./cogs'):
 async def purge(ctx, amount=50):
     if ctx.message.author.guild_permissions.manage_messages:
         await ctx.channel.purge(limit=amount+1)
-
-        
-
     else:
         await ctx.send(noperms)
+
+@client.command()
+async def bubblewrap(ctx):
+    await ctx.send('||POP||||POP||||POP||||POP||||POP||||POP||||POP||\n||POP||||POP||||POP||||POP||||POP||||POP||||POP||\n||POP||||POP||||POP||||POP||||POP||||POP||||POP||\n||POP||||POP||||POP||||POP||||POP||||POP||||POP||')
+        
+
+
 
 load_dotenv()
 TOKEN = os.getenv('TOKEN')

@@ -56,7 +56,7 @@ async def whitelist(ctx):
     await ctx.send("**First, to join the server, you must apply. Here is the link! https://forms.gle/3BES6WgUQmkM37do7** \nOnce you are done, ping a Server Owner to get access to the server.")
 
 @client.command()
-async def infoembed(ctx):
+async def info(ctx):
     embed=discord.Embed(title="**How to join the server!**", description="This is a Nation's SMP where you and your friends can gather resources, start wars and become the most powerful nation Minecraft has seen.  \n \nTo apply for the server, go to <#842013896519843841>. Once you have, ping a Server Owner is be whitelisted!   \n \nThe server IP is: **51.81.48.184:25585**  \n \nIf you have any questions, DM one of the staff!   Yours sincerely, The Ramen SMP Staff Team.", color=0xe60d43)
     await ctx.send(embed=embed)
 
@@ -69,7 +69,7 @@ async def kick(ctx):
 
 @client.command()
 async def help(ctx):
-    await ctx.send('**Current Command List:** \n`r!helpme` - Shows this menu. \n`r!infoembed` - Gives info on how to join the smp. \n`r!ping` - Shows the ping in ms to the server. \n`r!purge <amount>` - Deleted the specified number of messages. **Default is 50**. \n`r!hello` - Replies with a warm hello! \n`r!load <cog>` - Loads a COG module.')
+    await ctx.send('**Current Command List:** \n`r!help` - Shows this menu. \n`r!info` - Gives info on how to join the smp. \n`r!whitelist` - Shows how to apply for the server. \n`r!ping` - Shows the ping in ms to the server. \n`r!purge <amount>` - Deleted the specified number of messages. **Default is 50**. \n`r!hello` - Replies with a warm hello! \n`r!load <cog>` - Loads a COG module.')
 
 @client.command()
 async def load(ctx, extention):

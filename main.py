@@ -3,7 +3,9 @@ import os
 from discord.ext import commands
 from dotenv import load_dotenv
 client = commands.Bot(command_prefix = 'r!')
+client.remove_command('help')
 
+noperms = 'You dont have permission to do this, if you think this is a mistake, contact Loudbook!'
 
 @client.event
 async def on_message(message):
@@ -34,7 +36,7 @@ async def on_message(message):
 
 @client.event
 async def on_ready():
-    await client.change_presence(status=discord.Status.dnd, activity=discord.Activity(type=discord.ActivityType.watching, name="r!helpme for more info!"))
+    await client.change_presence(status=discord.Status.dnd, activity=discord.Activity(type=discord.ActivityType.watching, name="r!help for more info!"))
     print ('Bot is ready!')
 
 @client.command()
@@ -61,10 +63,10 @@ async def kick(ctx):
     if ctx.message.author.guild_permissions.manage_messages:
         await ctx.send("Test")
     else:
-        await ctx.send('You dont have permission to do this, if you think this is a mistake, contact Loudbook!')
+        await ctx.send(noperms)
 
 @client.command()
-async def helpme(ctx):
+async def help(ctx):
     await ctx.send('**Current Command List:** \n`r!helpme` - Shows this menu. \n`r!infoembed` - Gives info on how to join the smp. \n`r!ping` - Shows the ping in ms to the server. \n`r!purge <amount>` - Deleted the specified number of messages. **Default is 50**. \n`r!hello` - Replies with a warm hello!')
 
 @client.command()
@@ -87,7 +89,7 @@ async def purge(ctx, amount=50):
         
 
     else:
-        await ctx.send('You dont have permission to do this, if you think this is a mistake, contact Loudbook!')
+        await ctx.send(noperms)
 
 load_dotenv()
 TOKEN = os.getenv('TOKEN')

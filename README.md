@@ -1,2 +1,2 @@
-# RamenBot
-The bot for the Ramen SMP! Not currently public.
+# Discord.py Template
+A simple template for a discord.py bot, includes cogs and events.
